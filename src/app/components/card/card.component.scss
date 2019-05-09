@@ -1,0 +1,246 @@
+.card-content{
+    // margin-left: 40px;
+    margin-bottom: 40px;
+    justify-content: center;
+    max-width: 100px;
+    border-radius: 10px;
+    // transition: 0.5s;
+}
+
+@media screen and (min-width: 700px){
+    .card-content{
+    margin-left: 40px;
+    
+    }
+}
+.card{
+   justify-content: center; 
+}
+
+.description{
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.item-title{
+    letter-spacing: .00625em;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.5rem;
+}
+
+.matCardFooterIcons{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.2s linear;
+    margin-top: 10px;
+}
+
+.pin-icon{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.2s linear;  
+}
+
+.card-content:hover .pin-icon {
+    visibility: visible;
+    opacity: 1;
+}
+
+.card-content:hover .matCardFooterIcons {
+    visibility: visible;
+    opacity: 1;
+}
+
+.card-content:hover{
+    transform: scale(1.075);
+
+}
+
+@media screen and (min-width: 700px){
+.cardListView{
+    width:650px;
+
+}
+}
+
+@media screen and (max-width: 700px){
+    .cardListView{
+        width:350px;
+    }
+    }
+ .cardGridView{
+     max-width: 250px !important;
+     max-height: 500px !important; 
+ }   
+:host /deep/ .mat-chip {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+:host /deep/ .mat-standard-chip {
+    padding: 7px 7px;
+    min-height: 26px;
+ 
+}
+
+:host /deep/ .mat-chip.mat-standard-chip {
+    color: rgba(0,0,0,.87);
+    background: #0000001f;
+}
+
+:host /deep/ .mat-standard-chip.mat-chip-with-trailing-icon {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 4px;
+    padding-left: 0px;
+}
+
+.time-icon{
+    margin-right: 8px;
+}
+
+:host /deep/ 
+.mat-chip.mat-standard-chip .mat-chip-remove {
+    color: rgba(0,0,0,.87);
+    opacity: 0.6;
+}
+
+.show-reminders .remove{
+    opacity: 1;
+    visibility: hidden;
+}
+.show-reminders:hover .remove{
+    opacity: 1;
+    visibility: visible;
+}
+
+.show-time{
+    color: rgba(0,0,0,.87);
+    font-weight: 550;
+    font-size: 11px;
+    border: 1px solid transparent;
+    text-align: center;
+
+}
+
+.cardGridView .account-icon {
+    min-width: 248px;
+    /* min-height: 400px; */
+    margin-left: -15px;
+    margin-top: -15px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    max-width: 248px;
+
+}  
+.cardListView .account-icon {
+max-width: 648px;
+margin-left: -15px;
+margin-top: -15px;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+}
+.add-icon{
+    -moz-border-radius: 50px/50px;
+    -webkit-border-radius: 50px 50px;
+    border-radius: 50px;
+    border: solid 1px #fff;
+    height: 20px;
+    width : 20px;
+    margin-top: 8px;
+    margin-left: 10px;
+    // background-color: #fff;
+    // padding: 4px;
+    box-shadow: 0 0 0 1px #fff;
+
+}
+
+.img-add-person{
+    margin-top: 1px;
+    margin-left: 7px;
+}
+
+.initials{
+  color: #fff;
+  font-size: 10px;
+}
+
+.card-image:hover{
+    transform: scale(1.2);
+}
+
+.card-image{
+transition: 0.5s;
+}
+
+.btn{
+    visibility: hidden;
+    position: absolute;
+    top: 31%;
+    left: 80%;
+    // transform: translate(-50%, -50%);
+    // -ms-transform: translate(-50%, -50%);
+   background: rgb(78, 77, 77);
+    color: white;
+    font-size: 13px;
+    // padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    // transition: visibility 0.5s, opacity 0.2s linear;
+    opacity: 0.2s;
+    transition: 0.5s;
+
+}
+
+.btn:hover {
+    background: rgb(37, 37, 37) !important;
+    // transition: visibility 0.5s, opacity 0.2s linear;
+    opacity: 1;
+   
+
+}
+
+.card-image:hover .btn{
+    visibility: visible;
+    top: 31%;
+    left: 80%;
+    position: absolute;
+
+}
+
+.text{
+    color: #5f6368;
+    letter-spacing: .07272727em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .6875rem;
+    font-weight: 550;
+    line-height: 1rem;
+    margin: 32px 32px 8px;
+}
+
+
+.note-pic{
+    top: 38%;
+    left: 50%;
+    height: 122px;
+    position: fixed;
+    opacity: 0.15;
+    font-size: 118px;
+    margin-top: 65px;
+}
+
+.no-trash-text{
+    top: 69%;
+    left: 44%;
+    position: fixed;
+    color: rgba(51,51,51,0.4);
+    cursor: default;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.75rem;
+}

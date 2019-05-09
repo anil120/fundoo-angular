@@ -1,0 +1,177 @@
+<div fxLayout="column">
+<div fxFlex="100" class="note" fxLayoutAlign="space-around start" fxFlex.xs="95" >
+  <mat-card class="mat-card" fxFlex="50" fxLayout="row"  *ngIf="flag==true"
+  (click)="reverseFlag()" fxLayoutAlign="space-between start" fxFlex.xs="95" fxLayoutAlign.xs="space-around start">
+    <div fxFlex="65" data-text="Take a note.." class="text-area" contenteditable="true" class="maincard">
+    </div>
+    <div fxFlex="35" fxLayoutAlign="space-around start">
+      <!-- <mat-icon class="check-box" matTooltip="New List">check_box</mat-icon>
+      <mat-icon class="brush" matTooltip="New note with drawing">brush</mat-icon>
+      <mat-icon class="photo" matTooltip="New note with image">insert_photo</mat-icon> -->
+      <img src="../../../assets/draw.svg">
+      <img src="../../../assets/notewithdraw.svg">
+      <img src="../../../assets//photoadd.svg">
+    </div>
+  </mat-card>
+</div>
+
+<div fxFlex="100" class="big-note" fxLayoutAlign="space-around start" *ngIf="flag==false" fxFlex.xs="100">
+  <mat-card  [style.backgroundColor]="setColor"  fxFlex="50" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="space-around start" fxFlex.xs="95" fxFlex.sm="80">
+    <div fxLayout="row" fxLayoutGap="420px">
+    <input class="title" type="text" [formControl]="noteTitle" placeholder="Title">
+    <div *ngIf="value==false" (click)="reverseValue()" > <img src="../../../assets/pin.svg"></div>
+    <div *ngIf="value==true" (click)="reverseValue()"> <img src="../../../assets/unpin.svg"></div>
+  </div>
+    <div class="area">
+      <textarea class="add-note" matTextareaAutosize [formControl]="noteContent" placeholder="Take a note..."></textarea>
+    </div>
+    <mat-chip-list class="chip-list">
+
+        <mat-chip class="show-reminders" style="margin-left: 10px;" *ngIf="reminderData">
+          <mat-icon matChipRemove class="time-icon" style="margin-right: 8px;">access_time</mat-icon>
+           <span class="show-time">{{reminderData}}</span>
+          <mat-icon matChipRemove class="remove" (click)="removeReminder()">close </mat-icon>
+        </mat-chip>
+        </mat-chip-list>
+    <div  class="icons">
+      <mat-card-footer fxLayout="row"  fxLayoutAlign="space-between center">
+          <app-icon-list (reminderEvent)="receiveReminderEvent($event)" (setColorEvent)="receiveSetColorEvent($event)" (archiveEvent)="receiveArchiveEvent($event)"> </app-icon-list>
+          <button  mat-button (click)="addNote()"><span class="close">Close</span></button>
+      </mat-card-footer>
+    </div>
+  </mat-card>
+</div>
+
+<div >
+        <app-card fxFlex="100" fxLayoutAlign="space-around" [parentSubject]="parentSubject"></app-card>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="flag==true" (click)="reverseFlag()" fxLayout="row" fxLayoutAlign="space-around start" fxFlex="100">
+  <mat-card fxFlex="50" fxFlex.xs='97' class="matcard" fxLayoutAlign="space-between center">
+    <div data-text="Take a note.." class="Border" id="noteTitle" fxLayout="column" contenteditable="true" class="maincard">
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end start" fxFlex.xs="100">
+      <mat-icon class="check" matTooltip="New List">check_box</mat-icon>
+      <mat-icon class="brush" matTooltip="Drawing is not available">brush</mat-icon>
+      <mat-icon class="insert" matTooltip="New note with image">insert_photo</mat-icon>
+    </div>
+  </mat-card>
+</div> -->
+
+
+
+<!-- <div *ngIf="flag==false" fxLayout="row" fxLayoutAlign="space-around start" fxFlex="100">
+
+  <mat-card fxLayout="column" class="matcard" fxFlex="50" fxFlexOffset.xl="20" fxFlex.xs='97' >
+    <div contenteditable="true" data-text="Title"  id="noteContent" fxLayout="column" class="title">
+    </div>
+    <div contenteditable="true" data-text="Take a note.." class="Border" fxLayout="column" class="takenote">
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-around end" fxFlex="50">
+      <button id="Remaind" matTooltip="Remaind me" mat-icon-button [matMenuTriggerFor]="menu4">
+        <mat-icon>notification_important</mat-icon>
+      </button>
+      <mat-menu #menu4="matMenu" class="matmenu">
+        <button class="arrow" mat-stroked-button>
+          <mat-icon matTooltip="go back">arrow_back</mat-icon>
+        </button>
+        <p>Pick date & time</p>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-menu>
+
+      <button class="collaborator" matTooltip="collaborator" mat-icon-button>
+        <mat-icon>person_add</mat-icon>
+      </button>
+
+      <button [matMenuTriggerFor]="menu5" matTooltip="change color" mat-icon-button >
+        <mat-icon>color_lens</mat-icon>
+      </button>
+      <mat-menu #menu5="matMenu" class="colorsMenu" >
+        <button mat-mini-fab matTooltip="white" class="white"> </button>
+        <button mat-mini-fab matTooltip="red" class="red"></button>
+        <button mat-mini-fab matTooltip="orange" class="orange"></button>
+        <button mat-mini-fab matTooltip="yellow" class="yellow"></button><br>
+        <button mat-mini-fab matTooltip="green" class="green"></button>
+        <button mat-mini-fab matTooltip="teal" class="teal"></button>
+        <button mat-mini-fab matTooltip="Blue" class="blue"></button>
+        <button mat-mini-fab matTooltip="Dark Blue" class=darkblue></button><br>
+        <button mat-mini-fab matTooltip="purple" class="purple"></button>
+        <button mat-mini-fab matTooltip="pink" class="pink"></button>
+        <button mat-mini-fab matTooltip="Brown" class="Brown"></button>
+        <button mat-mini-fab matTooltip="Gray" class="gray"></button>
+
+      </mat-menu>
+
+      <button matTooltip="add image" mat-icon-button>
+        <mat-icon>insert_photo</mat-icon>
+      </button>
+
+
+      <button mat-icon-button [matMenuTriggerFor]="menu2" matTooltip="more">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu2="matMenu">
+        <button mat-menu-item>
+          <span>Delete note</span>
+        </button>
+        <button mat-menu-item>
+          <span>Add label</span>
+        </button>
+        <button mat-menu-item disabled>
+          <span>Add drawing</span>
+        </button>
+        <button mat-menu-item>
+          <span>Make a copy</span>
+        </button>
+        <button mat-menu-item>
+          <span>Show checkboxes</span>
+        </button>
+        <button mat-menu-item>
+          <span>Copy to google docs</span>
+        </button>
+      </mat-menu>
+
+      <button mat-button (click)="reverseFlag()">close</button>
+    </div>
+  </mat-card>
+</div> -->
